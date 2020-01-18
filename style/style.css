@@ -1,0 +1,12 @@
+#wrapper{
+    background-color: rgb(51, 50, 50);
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.search{
+    margin-left: 20px;
+    
+}

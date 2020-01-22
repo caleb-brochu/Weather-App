@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <div id = "wrapper">
@@ -18,11 +19,13 @@
             <div>
                 <h6>Search for a City:</h6>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" aria-label="city" aria-describedby="basic-addon2">
+                    <input id = "userInput" type="text" class="form-control">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+                      <button class="btn btn-outline-secondary" id = "search" type="button"><i class="fa fa-search"></i></button>
                     </div>
-                  </div>
+                </div>
+    
+                <div class = "addBtn"></div>
             </div>
         </div>
 
@@ -30,21 +33,26 @@
             <div class = "row">
                 <div class = "col-lg-12 col-md-12">
                     <div class ="jumbotron">
-                        <h2 id = "location">Atlana</h2>
-                        <div id ="temp">Temperature:</div>
-                        <div id ="humidity">Humidity:</div>
-                        <div id ="wind-speed">Wind Speed:</div>
-                        <div id ="uv-index">UV Index:</div>
+                        <h2 id = "location"></h2>
+                        <div id ="temp"></div>
+                        <div id ="humidity"></div>
+                        <div id ="wind-speed"></div>
+                        <div id ="uv-index"></div>
                     </div>
                 </div>
             </div>
             <div class = "row">
                 <div class = "col-lg-12">
-                        <h3 class = "five-day">5-Day Forcast:</h3>
+                        <div class = "five-day">5-Day Forcast:
+                            <div class = "row" id = "addFiveDay"></div>
+
+                        </div>
                         <div class = "days"></div>
                 </div>
             </div>
         
     </div>
+    <script src="script/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 </html>

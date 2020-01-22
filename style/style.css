@@ -17,3 +17,7 @@
     border: 1px lightgray;
     border-radius: 0px;
 }
+
+.card{
+    display: inline-block;
+}

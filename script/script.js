@@ -1,3 +1,6 @@
+
+$('.five-day').hide();
+
 $( document ).ready(function() {
     
     let input = $("#userInput");
@@ -8,8 +11,8 @@ $( document ).ready(function() {
     let windSpeed = $('#wind-speed')
     let uvIndex = $('#uv-index')
     let forecast =  $("#addFiveDay")
-    let cities = ["Seattle"];
-
+    let cities = JSON.parse(localStorage.getItem('cities')) || [];
+    
     createBtn()
     search.on("click", function(){
         event.preventDefault();
@@ -19,8 +22,10 @@ $( document ).ready(function() {
         else{
             //push input.val() to cities array 
             cities.push(input.val());
+            localStorage.setItem('cities', JSON.stringify(cities))
             // call a function that creates a button for each element in cities array
             findWeather(input.val());
+            $('.five-day').show();
             createBtn();
         }
     });
@@ -29,6 +34,7 @@ $( document ).ready(function() {
     function createBtn(){
         addCity.empty();
         forecast.empty();
+        
         for (let i = 0; i < cities.length; i++){
             // Create button element 
             let a = $("<button>");
@@ -82,7 +88,7 @@ $( document ).ready(function() {
                   $("#uv-index").text("UV Index: " + UVindex);
               });
 
-          for (let i = 1; i < 6; i++){
+          for (let i = 8; i < 40; i=i+8){
             // Create button element 
             let icon = response.list[i].weather[0].icon;
             let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -90,10 +96,10 @@ $( document ).ready(function() {
             let column = $("<div>").addClass("col-md-2");
             let card = $("<div>").addClass("card");
             let cardBody = $("<div>").addClass("card-body");
-            let fiveDate =  $("<div>").text(moment().add(i, 'days').format('l'))
+            let fiveDate =  $("<div>").text(moment().add(i/8, 'days').format('l'));
             let fiveIcon = $("<div>").html("<img src='" + iconURL  + "'>");
-            let fiveTemp = $("<div>").text("Temp: " + response.list[i].main.temp + String.fromCharCode(176) + "F")
-            let fiveHumidity = $("<div>").text("Humidity: " + response.list[i].main.humidity + "%")
+            let fiveTemp = $("<div>").text("Temp: " + response.list[i].main.temp + String.fromCharCode(176) + "F");
+            let fiveHumidity = $("<div>").text("Humidity: " + response.list[i].main.humidity + "%");
 
             cardBody.append(fiveDate);
             cardBody.append(fiveIcon);
@@ -102,7 +108,7 @@ $( document ).ready(function() {
             card.append(cardBody);
             column.append(card);
             $("#addFiveDay").append(column);
-
+            $('.five-day').show();
             
           }
           // Log the resulting object

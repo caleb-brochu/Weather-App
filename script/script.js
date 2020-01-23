@@ -39,7 +39,7 @@ $( document ).ready(function() {
             // Create button element 
             let a = $("<button>");
             // Adding a class's to button
-            a.addClass("btn btn-secondary btn-lg btn-block city");
+            a.addClass("btn btn-lg btn-block city");
             // Adding a data-attribute
             a.attr("data-name", cities[i]);
             // Providing the initial button text
@@ -71,7 +71,8 @@ $( document ).ready(function() {
         .then(function(response) {
             let latitude = response.city.coord.lat;
             let longitude = response.city.coord.lon;
-            $("#location").text(response.city.name + " (" + moment().format('l') + ")")
+            let weatherIcon = "http://openweathermap.org/img/w/" + response.list[0].weather[0].icon + ".png";
+            $("#location").html(response.city.name + " (" + moment().format('l') + ")" + "<img  src='" +  weatherIcon  + "'>");
             $("#temp").text("Temperature: " + response.list[0].main.temp + String.fromCharCode(176) + "F");
             $("#humidity").text("Humidity: " + response.list[0].main.humidity + "%");
             $("#wind-speed").text("Wind Speed: " + response.list[0].wind.speed+ " MPH");
@@ -88,12 +89,12 @@ $( document ).ready(function() {
                   $("#uv-index").text("UV Index: " + UVindex);
               });
 
-          for (let i = 8; i < 40; i=i+8){
+          for (let i = 7; i < 40; i=i+8){
             // Create button element 
             let icon = response.list[i].weather[0].icon;
             let iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
 
-            let column = $("<div>").addClass("col-md-2");
+            let column = $("<div>").addClass("block");
             let card = $("<div>").addClass("card");
             let cardBody = $("<div>").addClass("card-body");
             let fiveDate =  $("<div>").text(moment().add(i/8, 'days').format('l'));

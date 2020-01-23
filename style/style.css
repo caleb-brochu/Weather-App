@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 #wrapper{
     background-color: rgb(51, 50, 50);
     color: white;
@@ -5,7 +8,6 @@
     padding: 5px;
     
 }
-
 
 .search{
     background-color: lightgray;
@@ -20,4 +22,30 @@
 
 .card{
     display: inline-block;
+}
+
+.five-day{
+    padding-left: 30px;
+}
+
+.card-body{
+    background-color:rgb(0,123,255);
+    border-radius: 5px;
+    color: white;
+    margin-right: 5px;
+}
+
+.btn-group-vertical{
+    width:95%;
+    background-color: whitesmoke;
+    color: gray;
+    text-align: left;
+    border-left: gray 1px solid;
+    border-right: gray 1px solid;
+    border-top: gray 1px solid;
+    border-radius: 5px;
+}
+
+.city{
+    border-bottom: gray 1px solid;
 }
